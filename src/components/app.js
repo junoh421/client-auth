@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from '../logo.svg';
 import '../style/app.css';
 import UserDetail from '../containers/user-detail';
-import SearchBar from './search_bar';
+import SearchBar from '../containers/search-bar';
 
 export default class App extends Component {
 

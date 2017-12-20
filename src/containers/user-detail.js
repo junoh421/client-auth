@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 class UserDetail extends Component {
   render() {
-    if (!this.props.matchingUser) {
+    if (!this.props.user) {
       return <div>Enter in a user to get started.</div>
     }
 
@@ -20,9 +20,11 @@ class UserDetail extends Component {
 }
 
 function mapStateToProps(state) {
-    return {
-        user: state.matchingUser
-    };
+  debugger;
+
+  return {
+    user: state.matchingUser
+  };
 }
 
 
