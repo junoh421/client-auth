@@ -20,12 +20,9 @@ class UserDetail extends Component {
 }
 
 function mapStateToProps(state) {
-  debugger;
-
   return {
     user: state.matchingUser
   };
 }
-
 
 export default connect(mapStateToProps) (UserDetail);
