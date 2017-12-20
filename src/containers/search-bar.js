@@ -8,7 +8,7 @@ class SearchBar extends Component {
     return (
       <div className="search-bar">
         <input 
-          onChange={event => this.props.selectUser(this.props.users[0]) }
+          onChange={event => this.props.selectUser(this.props.users[1]) }
         />
       </div>
     ); 
