@@ -52,9 +52,11 @@ class NewUser extends Component {
             name="password"
             component={this.renderField}
           />
-          <button type="submit" className="btn btn-primary">Sign up</button>
-          <Link className="btn btn-success" to="/login">
-            Log In 
+          <button type="submit" className="btn btn-primary center-block">Sign up</button>
+          <Link to="/login">
+            <button className="btn btn-success center-block">
+              Log in
+            </button>
           </Link>
         </form>
       </div>
@@ -70,7 +72,7 @@ function validate(values) {
   }
 
   if (!values.fullName) {
-    errors.fullName = "Enter full nam";
+    errors.fullName = "Enter full name";
   }
 
   if (!values.username) {

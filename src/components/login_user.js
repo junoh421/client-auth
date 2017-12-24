@@ -42,9 +42,11 @@ class LoginUser extends Component {
             name="password"
             component={this.renderField}
           />
-          <button type="submit" className="btn btn-primary">Sign in</button>
-          <Link className="btn btn-success" to="/users/new">
-            Sign Up
+          <button type="submit" className="btn btn-primary center-block">Sign in</button>
+          <Link to="/users/new">
+            <button className="btn btn-success center-block">
+              Sign up
+            </button>
           </Link>
         </form>
       </div>
