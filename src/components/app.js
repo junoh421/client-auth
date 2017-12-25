@@ -3,6 +3,7 @@ import logo from '../logo.svg';
 import '../style/app.css';
 import UserDetail from '../containers/user-detail';
 import SearchBar from '../containers/search-bar';
+import UserContents from '../containers/user-contents';
 
 export default class App extends Component {
 
@@ -15,6 +16,7 @@ export default class App extends Component {
           </header>
           <SearchBar />
           <UserDetail />
+          <UserContents />
       </div>
     );
   }
