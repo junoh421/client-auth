@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
+import * as actions from '../../actions';
+import { connect } from 'react-redux';
 
 class SignUp extends Component {
   renderField(field) {
@@ -90,7 +92,10 @@ function validate(values) {
   return errors;
 }
 
-export default reduxForm({
-  validate,
-  form: 'SignUp'
-}) (SignUp);
+export default reduxForm(
+  {
+    validate,
+    form: 'SignUp'
+  }) (
+    connect(null, actions) (SignUp)
+  );

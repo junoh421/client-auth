@@ -25,7 +25,7 @@ class SignIn extends Component {
   }
 
   onSubmit({email, password}) {
-    this.props.signInUser({ email, password});
+    this.props.signInUser({ email, password}, this.props.history);
   }
 
   render() {

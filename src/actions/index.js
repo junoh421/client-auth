@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 const ROOT_URL = 'http://localhost:3090';
 
 export const selectUser = (user) => {
@@ -19,9 +20,14 @@ export const fetchUserContents = () => {
   };
 };
 
-export const signInUser = ({ email, password }) => {
-  debugger;
+export const signInUser = ({ email, password }, history) => {
   return function(dispatch) {
-    axios.post(`${ROOT_URL}/signin`, {email, password});
+    axios.post(`${ROOT_URL}/signin`, {email, password})
+    .then( response => {
+      history.push('/')
+    })
+    .catch( response => {
+
+    })
   }
 }
