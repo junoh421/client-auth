@@ -1,11 +1,14 @@
-export function selectUser(user) {
+import axios from 'axios';
+const ROOT_URL = 'http://localhost:3090';
+
+export const selectUser = (user) => {
   return {
     type: 'SELECTED_USER',
     payload: user
   };
 }
 
-export function fetchUserContents() {
+export const fetchUserContents = () => {
   return {
     type: 'FETCH_USER_CONTENTS',
     payload: [
@@ -15,3 +18,10 @@ export function fetchUserContents() {
     ]
   };
 };
+
+export const signInUser = ({ email, password }) => {
+  debugger;
+  return function(dispatch) {
+    axios.post(`${ROOT_URL}/signin`, {email, password});
+  }
+}

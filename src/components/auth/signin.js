@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
+import * as actions from '../../actions';
+import { connect } from 'react-redux';
 
 class SignIn extends Component {
   renderField(field) {
@@ -22,8 +24,8 @@ class SignIn extends Component {
     )
   }
 
-  onSubmit(values) {
-
+  onSubmit({email, password}) {
+    this.props.signInUser({ email, password});
   }
 
   render() {
@@ -72,7 +74,11 @@ function validate(values) {
   return errors;
 }
 
-export default reduxForm({
-  validate,
-  form: 'SignIn'
-}) (SignIn);
+
+export default reduxForm(
+  {
+    validate,
+    form: 'SignIn'
+  }) (
+    connect(null, actions) (SignIn)
+  );
