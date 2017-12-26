@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 
-class LoginUser extends Component {
+class SignIn extends Component {
   renderField(field) {
     const { meta: {touched, error}} = field;
     const className = `form-group ${touched && error ? 'has-danger' : ''}`;
@@ -43,7 +43,7 @@ class LoginUser extends Component {
             component={this.renderField}
           />
           <button type="submit" className="btn btn-primary center-block">Sign in</button>
-          <Link to="/users/new">
+          <Link to="/signup">
             <button className="btn btn-success center-block">
               Sign up
             </button>
@@ -70,5 +70,5 @@ function validate(values) {
 
 export default reduxForm({
   validate,
-  form: 'LoginUser'
-}) (LoginUser);
+  form: 'SignIn'
+}) (SignIn);
