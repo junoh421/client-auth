@@ -31,9 +31,8 @@ form a {
   margin-left: 5px;
 }
 
-.form-group {
-  margin-left: 300px;
-  margin-right: 300px;
+.nav-item {
+  margin: 2px;
 }
 
 .user-contents-list {

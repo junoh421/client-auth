@@ -30,35 +30,39 @@ class SignUp extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <div> 
-        <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-          <Field
-            label="Email"
-            name="email"
-            component={this.renderField}
-          />
-          <Field
-            label="Full Name"
-            name="fullName"
-            component={this.renderField}
-          />
-          <Field
-            label="Username"
-            name="username"
-            component={this.renderField}
-          />
-          <Field
-            label="Password"
-            name="password"
-            component={this.renderField}
-          />
-          <button type="submit" className="btn btn-primary center-block">Sign up</button>
-          <Link to="/signin">
-            <button className="btn btn-success center-block">
-              Log in
-            </button>
-          </Link>
-        </form>
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-body">
+            <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+              <Field
+                label="Email"
+                name="email"
+                component={this.renderField}
+              />
+              <Field
+                label="Full Name"
+                name="fullName"
+                component={this.renderField}
+              />
+              <Field
+                label="Username"
+                name="username"
+                component={this.renderField}
+              />
+              <Field
+                label="Password"
+                name="password"
+                component={this.renderField}
+              />
+              <button type="submit" className="btn btn-primary">Sign up</button>
+              <Link to="/signin">
+                <button className="btn btn-success">
+                  Log in
+                </button>
+              </Link>
+            </form>
+          </div>
+        </div>
       </div>
     )   
   }

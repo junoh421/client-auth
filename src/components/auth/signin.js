@@ -30,25 +30,29 @@ class SignIn extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <div> 
-        <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-          <Field
-            label="Phone Number, username, or email"
-            name="contactInformation"
-            component={this.renderField}
-          />          
-          <Field
-            label="Password"
-            name="password"
-            component={this.renderField}
-          />
-          <button type="submit" className="btn btn-primary center-block">Sign in</button>
-          <Link to="/signup">
-            <button className="btn btn-success center-block">
-              Sign up
-            </button>
-          </Link>
-        </form>
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-body">
+            <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+              <Field
+                label="Email"
+                name="email"
+                component={this.renderField}
+              />          
+              <Field
+                label="Password"
+                name="password"
+                component={this.renderField}
+              />
+              <button type="submit" className="btn btn-primary">Sign in</button>
+              <Link to="/signup">
+                <button className="btn btn-success">
+                  Sign up
+                </button>
+              </Link>
+            </form>
+          </div>
+        </div>
       </div>
     )   
   }
@@ -57,8 +61,8 @@ class SignIn extends Component {
 function validate(values) {
   const errors = {}
 
-  if (!values.contactInformation) {
-    errors.contactInformation = "Enter contact information";
+  if (!values.email) {
+    errors.email = "Enter email";
   }
 
   if (!values.password) {
