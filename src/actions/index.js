@@ -1,8 +1,5 @@
 import axios from 'axios';
 
-
-const ROOT_URL = 'http://localhost:3090';
-
 export const selectUser = (user) => {
   return {
     type: 'SELECTED_USER',
@@ -19,6 +16,8 @@ export const fetchUserContents = () => {
 };
 
 export const signInUser = ({ email, password }, history) => {
+  const ROOT_URL = 'http://localhost:3090';
+
   return function(dispatch) {
     axios.post(`${ROOT_URL}/signin`, {email, password})
     .then( response => {
@@ -34,6 +33,14 @@ export const signInUser = ({ email, password }, history) => {
   }
 }
 
+export const signOutUser = () => {
+  localStorage.removeItem('token');
+
+  return {
+    type: 'UNAUTH_USER'
+  }
+
+}
 
 export const authError = (error) => {
   return {

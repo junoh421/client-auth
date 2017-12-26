@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
 import { Link } from 'react-router-dom';
+import * as actions from '../actions';
 
 class Header extends Component {
   renderNavItems() {
@@ -8,7 +9,7 @@ class Header extends Component {
       return(
         <li className="nav-item active">
           <Link to="/">
-            <button className="btn btn-success btn-sm">
+            <button onClick={() => this.props.signOutUser()} className="btn btn-success btn-sm">
               Sign Out
             </button>
           </Link>
@@ -51,4 +52,4 @@ function mapStateToProps(state) {
   return { authenticated: state.auth.authenticated}
 }
 
-export default connect(mapStateToProps, null) (Header);
+export default connect(mapStateToProps, actions) (Header);
