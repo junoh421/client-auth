@@ -8,14 +8,19 @@ import SignIn from './components/auth/signin';
 import reducers from './reducers';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import reduxThunk from 'redux-thunk';
-
 import './style/index.css';
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
+const store = createStoreWithMiddleware(reducers);
+const token = localStorage.getItem('token');
+
+if (token) {
+  store.dispatch( {type: 'AUTH_USER'} );
+}
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-  	<BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter>
       <div>
         <Switch>
           <Route path='/signin' component={SignIn} />
