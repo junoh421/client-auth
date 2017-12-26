@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 const ROOT_URL = 'http://localhost:3090';
 
 export const selectUser = (user) => {
@@ -13,9 +14,6 @@ export const fetchUserContents = () => {
   return {
     type: 'FETCH_USER_CONTENTS',
     payload: [
-      {id: 1, likes: '10', posts: '10' },
-      {id: 2, likes: '13', posts: '15' },
-      {id: 3, likes: '16', posts: '17' }
     ]
   };
 };
@@ -24,10 +22,22 @@ export const signInUser = ({ email, password }, history) => {
   return function(dispatch) {
     axios.post(`${ROOT_URL}/signin`, {email, password})
     .then( response => {
+      dispatch({ type: 'AUTH_USER' });
+      localStorage.setItem('token', response.data.token);
+
       history.push('/')
     })
     .catch( response => {
+      dispatch(authError("Incorrect email or password"))
 
     })
+  }
+}
+
+
+export const authError = (error) => {
+  return {
+    type: 'AUTH_ERROR',
+    payload: error
   }
 }
