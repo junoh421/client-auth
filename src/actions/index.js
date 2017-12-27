@@ -33,6 +33,23 @@ export const signInUser = ({ email, password }, history) => {
   }
 }
 
+export const signUpUser = ({ email, password, userName, fullName }, history) => {
+  const ROOT_URL = 'http://localhost:3090';
+
+  return function(dispatch) {
+    axios.post(`${ROOT_URL}/signup`, {email, password, userName, fullName})
+    .then( response => {
+      dispatch({ type: 'AUTH_USER' });
+      localStorage.setItem('token', response.data.token);
+
+      history.push('/')
+    })
+    .catch( response => {
+      dispatch(authError(response.response.data.error))
+    })
+  }
+}
+
 export const signOutUser = () => {
   localStorage.removeItem('token');
 

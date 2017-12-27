@@ -14,7 +14,7 @@ class SignUp extends Component {
         <label>{field.label}</label>
         <input
           className="form-control"
-          type="text"
+          type={field.type}
           {...field.input}
         />
         <div className="text-help">
@@ -24,8 +24,18 @@ class SignUp extends Component {
     )
   }
 
-  onSubmit(values) {
+  onSubmit({email, password, userName, fullName}) {
+    this.props.signUpUser({ email, password, userName, fullName }, this.props.history);
+  }
 
+  renderError() {
+    if (this.props.errorMessage) {
+      return (
+        <div className="alert alert-danger">
+          <strong> {this.props.errorMessage} </strong>
+        </div>
+      )
+    }
   }
 
   render() {
@@ -48,14 +58,16 @@ class SignUp extends Component {
               />
               <Field
                 label="Username"
-                name="username"
+                name="userName"
                 component={this.renderField}
               />
               <Field
                 label="Password"
                 name="password"
+                type="password"
                 component={this.renderField}
               />
+              { this.renderError() }
               <button type="submit" className="btn btn-primary">Sign up</button>
               <Link to="/signin">
                 <button className="btn btn-success">
@@ -81,8 +93,8 @@ function validate(values) {
     errors.fullName = "Enter full name";
   }
 
-  if (!values.username) {
-    errors.username = "Enter username";
+  if (!values.userName) {
+    errors.userName = "Enter username";
   }
 
   if (!values.password) {
@@ -92,10 +104,14 @@ function validate(values) {
   return errors;
 }
 
+function mapStateToProps(state) {
+  return { errorMessage: state.auth.error }
+}
+
 export default reduxForm(
   {
     validate,
     form: 'SignUp'
   }) (
-    connect(null, actions) (SignUp)
+    connect(mapStateToProps, actions) (SignUp)
   );
