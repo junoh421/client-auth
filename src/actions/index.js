@@ -1,4 +1,5 @@
 import axios from 'axios';
+const ROOT_URL = 'http://localhost:3090';
 
 export const selectUser = (user) => {
   return {
@@ -34,8 +35,6 @@ export const signInUser = ({ email, password }, history) => {
 }
 
 export const signUpUser = ({ email, password, userName, fullName }, history) => {
-  const ROOT_URL = 'http://localhost:3090';
-
   return function(dispatch) {
     axios.post(`${ROOT_URL}/signup`, {email, password, userName, fullName})
     .then( response => {
@@ -63,5 +62,14 @@ export const authError = (error) => {
   return {
     type: 'AUTH_ERROR',
     payload: error
+  }
+}
+
+
+export const goToDashboard = () => {
+  return function(dispatch) {
+    axios.get(`${ROOT_URL}/dashboard`, {
+      headers: { authorization: localStorage.getItem('token')}
+    })
   }
 }
