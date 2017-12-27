@@ -41,7 +41,7 @@ export const signUpUser = ({ email, password, userName, fullName }, history) => 
       dispatch({ type: 'AUTH_USER' });
       localStorage.setItem('token', response.data.token);
 
-      history.push('/')
+      history.push('/dashboard')
     })
     .catch( response => {
       dispatch(authError(response.response.data.error))
