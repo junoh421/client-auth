@@ -67,6 +67,12 @@ class SignUp extends Component {
                 type="password"
                 component={this.renderField}
               />
+              <Field
+                label="Confirm Password"
+                name="confirmPassword"
+                type="password"
+                component={this.renderField}
+              />
               { this.renderError() }
               <button type="submit" className="btn btn-primary">Sign up</button>
               <Link to="/signin">
@@ -99,6 +105,10 @@ function validate(values) {
 
   if (!values.password) {
     errors.password = "Enter password";
+  }
+
+  if (values.password !== values.confirmPassword) {
+    errors.password = 'Passwords must match'
   }
 
   return errors;
