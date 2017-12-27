@@ -8,6 +8,7 @@ import SignIn from './containers/auth/signin';
 import reducers from './reducers';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import reduxThunk from 'redux-thunk';
+// import RequireAuth from './containers/auth/require_auth';
 import './style/index.css';
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
